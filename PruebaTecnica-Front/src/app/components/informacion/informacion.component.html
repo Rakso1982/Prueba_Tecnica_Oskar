@@ -1,0 +1,44 @@
+<form class="py-3 d-flex justify-content-center" id="frmInformacion" autocomplete="off" [formGroup]="formInformacion" (ngSubmit)="guardar()">
+    <div class="p-3 card bg-white border border-black text-center bg-white">
+        <div class="container-fluid">
+            <h5 style="font-family: Verdana; font-weight: 700;">INFORMACIÓN DE CLIENTES</h5>
+            <hr>
+            <div class="row">
+                <!--Tipo Documento-->
+                <div class="pb-3 row">
+                    <label for="idTipoDocumento" class="form-label col-12 col-sm-4 h6 d-flex justify-content-start"><small>Tipo de Documento</small></label>
+                    <select class="porc-m form-select form-select-sm col-12 col-sm-8" id="idTipoDocumento" aria-describedby="idTipoDocumentoFeedback" formControlName="tipoDocumento" [class.is-invalid]="tipoDocumentoNoValido">
+                        <option *ngFor="let tipoDoc of listaTipoDocumento" [value]="tipoDoc.id">{{tipoDoc.descripcion}}</option>
+                    </select>
+                    <small *ngIf="tipoDocumentoNoValido" class="d-flex justify-content-start text-danger offset-md-4">Seleccione tipo documento</small>
+                </div>
+
+                <!--Número de Identificación-->
+                <div class="pb-3 row">
+                    <label for="idNumeroIdentificacion" class="form-label col-12 col-sm-4 h6 d-flex justify-content-start"><small>Número de Identificación</small></label>
+                    <input type="text" class="form-control form-control-sm col-12" id="idNumeroIdentificacion" placeholder="Número de Identificación" formControlName="numeroIdentificacion" [class.is-invalid]="numeroIdentificacionNoValido">
+                    <small *ngIf="numeroIdentificacionNoValido" class="d-flex justify-content-start text-danger offset-md-4">Ingrese número de identificación válido</small>
+                </div>
+
+                <!--correo electrónico-->
+                <div class="pb-3 row">
+                    <label for="idEmail" class="form-label col-12 col-sm-4 h6 d-flex justify-content-start"><small>email</small></label>
+                    <input type="text" class="form-control form-control-sm col-12" id="idEmail" placeholder="email" formControlName="email" [class.is-invalid]="emailNoValido">
+                    <small *ngIf="emailNoValido " class="d-flex justify-content-start text-danger offset-md-4">Ingrese un email válido</small>
+                </div>
+
+                <!--celular-->
+                <div class="pb-3 row">
+                    <label for="idCelular" class="form-label col-12 col-sm-4 h6 d-flex justify-content-start"><small>Celular</small></label>
+                    <input type="text" class="form-control form-control-sm col-12" id="idCelular" placeholder="Celular" formControlName="celular" [class.is-invalid]="celularNoValido">
+                    <small *ngIf="celularNoValido" class="d-flex justify-content-start text-danger offset-md-4">Ingrese número de celular válido</small>
+                </div>
+
+                <hr>
+                <button class="w-100 btn btn-sm btn-primary text-white" type="submit" form="frmInformacion">Guardar</button>
+                <!--<small *ngIf="aut===1" class="d-flex justify-content-start text-danger col-12">Usuario o password incorrectos</small>-->
+                <hr>
+            </div>
+        </div>
+    </div>
+</form>
